@@ -1,0 +1,24 @@
+{
+  "overview": "A full government health platform with a secure admin panel and a public customer portal. Admins manage services, configure payment numbers, and track applications. Customers browse services, submit applications with Bkash/Nagad payment, and track their status using a phone number or reference number.",
+  "features": [
+    "Secure admin login with hardcoded credentials",
+    "Admin dashboard with application statistics",
+    "Service/package management (add, edit, delete)",
+    "Bkash and Nagad payment number configuration",
+    "Customer application form with auto-generated reference number",
+    "Bkash/Nagad payment modal showing configured numbers",
+    "Application status tracking by phone or reference number",
+    "Admin application management with search, filter, and status updates",
+    "Mobile-responsive government health aesthetic"
+  ],
+  "category": "productivity",
+  "tags": [
+    "health",
+    "government",
+    "admin-panel",
+    "customer-portal",
+    "payments",
+    "bangladesh"
+  ],
+  "last_updated": "2026-04-13T11:58:33.308Z"
+}

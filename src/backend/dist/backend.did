@@ -1,0 +1,115 @@
+type Service = 
+ record {
+   active: bool;
+   createdAt: int;
+   description: text;
+   id: text;
+   name: text;
+   price: float64;
+   requirements: text;
+ };
+type PaymentConfig = 
+ record {
+   bkash: text;
+   nagad: text;
+ };
+type ContactConfig = 
+ record {
+   establishYear: text;
+   helpline: text;
+   imo: text;
+   whatsapp: text;
+ };
+type Application = 
+ record {
+   customerName: text;
+   destinationCountry: text;
+   district: text;
+   dob: text;
+   fatherName: text;
+   id: text;
+   motherName: text;
+   nid: text;
+   notes: text;
+   permanentAddress: text;
+   phone: text;
+   presentAddress: text;
+   purpose: text;
+   refNumber: text;
+   status: text;
+   submittedAt: int;
+   transactionId: text;
+ };
+service : {
+  addService: (token: text, name: text, description: text, price: float64,
+   requirements: text) -> (variant {
+                             err: text;
+                             ok: text;
+                           });
+  deleteService: (token: text, id: text) -> (variant {
+                                               err: text;
+                                               ok: text;
+                                             });
+  getAllServicesAdmin: (token: text) ->
+   (variant {
+      err: text;
+      ok: vec Service;
+    });
+  getApplicationByPhone: (phone: text) -> (vec Application);
+  getApplicationByRef: (ref: text) -> (opt Application);
+  getApplications: (token: text) ->
+   (variant {
+      err: text;
+      ok: vec Application;
+    });
+  getContactConfig: () -> (ContactConfig);
+  getPaymentConfig: () -> (PaymentConfig);
+  getServices: () -> (vec Service);
+  getStats: (token: text) ->
+   (variant {
+      err: text;
+      ok:
+       record {
+         approved: nat;
+         pending: nat;
+         processing: nat;
+         rejected: nat;
+         total: nat;
+       };
+    });
+  logoutAdmin: (token: text) -> (bool);
+  setContactConfig: (token: text, config: ContactConfig) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  setPaymentConfig: (token: text, bkash: text, nagad: text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  submitApplication: (customerName: text, fatherName: text, motherName: 
+   text, dob: text, phone: text, nid: text, presentAddress: text,
+   permanentAddress: text, district: text, destinationCountry: text, purpose:
+   text, transactionId: text, notes: text) -> (variant {
+                                                 err: text;
+                                                 ok: text;
+                                               });
+  updateApplicationStatus: (token: text, appId: text, status: text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  updateService: (token: text, id: text, name: text, description: text,
+   price: float64, requirements: text, active: bool) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  validateToken: (token: text) -> (bool);
+  verifyAdmin: (username: text, password: text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+}
